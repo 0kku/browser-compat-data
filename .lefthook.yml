@@ -16,6 +16,7 @@ pre-commit:
       glob: "**/*.json"
       exclude:
         - .vscode/*.json
+        - build/*.json
         - browsers/*.json
         - schemas/*.json
         - types/*.json

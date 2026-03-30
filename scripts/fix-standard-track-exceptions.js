@@ -220,6 +220,7 @@ const instructions = `
     ${styleText('cyan', 'p,https://...')} Use parent spec_url + extra URL on this subfeature
     ${styleText('cyan', 'p=https://...')} Set spec_url on parent + this subfeature
     ${styleText('cyan', 'f')}            Set standard_track to false (+ all subfeatures)
+    ${styleText('cyan', 'r')}            Repeat the previous action
     ${styleText('cyan', '(Enter)')}      Skip this entry
     ${styleText('cyan', '/foo')}         Skip ahead until an entry containing "foo"
     ${styleText('cyan', 'o')}            Open ancestor spec_url(s) in the browser
@@ -268,7 +269,7 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-const prompt = `  ${styleText('dim', 'URL, 1-9 (suggestion), x [term] (xref), p, f, /skip-to, or ?')}
+const prompt = `  ${styleText('dim', 'URL, 1-9 (suggestion), x [term] (xref), p, f, r (repeat), /skip-to, or ?')}
   > `;
 
 /** Save progress and exit */
@@ -292,6 +293,7 @@ process.on('SIGINT', async () => {
 console.log(instructions);
 
 let skipUntil = null;
+let lastInput = '';
 
 /** @type {{ index: number, undo: () => void } | null} */
 let lastAction = null;
@@ -405,7 +407,16 @@ while (idx < exceptions.length) {
 
   // Prompt loop (re-prompt on ?, o, and invalid input)
   while (true) {
-    const answer = (await rl.question(prompt)).trim();
+    let answer = (await rl.question(prompt)).trim();
+
+    if (answer === 'r') {
+      if (!lastInput) {
+        console.log(styleText('red', '  Nothing to repeat.'));
+        continue;
+      }
+      console.log(styleText('dim', `  Repeating: ${lastInput}`));
+      answer = lastInput;
+    }
 
     if (answer === '?') {
       console.log(instructions);
@@ -497,6 +508,7 @@ while (idx < exceptions.length) {
           }
         },
       };
+      lastInput = answer;
       break;
     }
 
@@ -524,6 +536,7 @@ while (idx < exceptions.length) {
           remaining.add(featurePath);
         },
       };
+      lastInput = answer;
       break;
     }
 
@@ -556,6 +569,7 @@ while (idx < exceptions.length) {
           remaining.add(featurePath);
         },
       };
+      lastInput = answer;
       break;
     }
 
@@ -591,6 +605,7 @@ while (idx < exceptions.length) {
           remaining.add(featurePath);
         },
       };
+      lastInput = answer;
       break;
     }
 
@@ -619,6 +634,7 @@ while (idx < exceptions.length) {
           remaining.add(featurePath);
         },
       };
+      lastInput = answer;
       break;
     }
 
@@ -644,6 +660,7 @@ while (idx < exceptions.length) {
           remaining.add(featurePath);
         },
       };
+      lastInput = answer;
       break;
     }
 

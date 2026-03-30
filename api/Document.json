@@ -781,7 +781,7 @@
             "chrome_android": "mirror",
             "edge": "mirror",
             "firefox": {
-              "version_added": false
+              "version_added": "150"
             },
             "firefox_android": "mirror",
             "oculus": "mirror",
@@ -796,7 +796,7 @@
             "webview_ios": "mirror"
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -1173,7 +1173,7 @@
               "version_added": "12"
             },
             "firefox": {
-              "version_added": false
+              "version_added": "150"
             },
             "firefox_android": "mirror",
             "oculus": "mirror",
@@ -2034,7 +2034,7 @@
         "options_parameter": {
           "__compat": {
             "description": "`options` parameter",
-            "spec_url": "https://dom.spec.whatwg.org/#dom-document-createelement-localname-options-options",
+            "spec_url": "https://dom.spec.whatwg.org/#dictdef-elementcreationoptions",
             "tags": [
               "web-features:dom"
             ],
@@ -2054,7 +2054,7 @@
               "opera": "mirror",
               "opera_android": "mirror",
               "safari": {
-                "version_added": false
+                "version_added": "26"
               },
               "safari_ios": "mirror",
               "samsunginternet_android": "mirror",
@@ -2065,6 +2065,70 @@
               "experimental": false,
               "standard_track": true,
               "deprecated": false
+            }
+          },
+          "customElementRegistry_option": {
+            "__compat": {
+              "description": "`customElementRegistry` option",
+              "spec_url": "https://dom.spec.whatwg.org/#dictdef-elementcreationoptions",
+              "support": {
+                "chrome": {
+                  "version_added": "146"
+                },
+                "chrome_android": "mirror",
+                "edge": "mirror",
+                "firefox": {
+                  "version_added": false
+                },
+                "firefox_android": "mirror",
+                "oculus": "mirror",
+                "opera": "mirror",
+                "opera_android": "mirror",
+                "safari": {
+                  "version_added": "26"
+                },
+                "safari_ios": "mirror",
+                "samsunginternet_android": "mirror",
+                "webview_android": "mirror",
+                "webview_ios": "mirror"
+              },
+              "status": {
+                "experimental": false,
+                "standard_track": true,
+                "deprecated": false
+              }
+            }
+          },
+          "options_is_parameter": {
+            "__compat": {
+              "description": "`is` parameter",
+              "spec_url": "https://dom.spec.whatwg.org/#dictdef-elementcreationoptions",
+              "support": {
+                "chrome": {
+                  "version_added": "56"
+                },
+                "chrome_android": "mirror",
+                "edge": "mirror",
+                "firefox": {
+                  "version_added": false
+                },
+                "firefox_android": "mirror",
+                "oculus": "mirror",
+                "opera": "mirror",
+                "opera_android": "mirror",
+                "safari": {
+                  "version_added": "26"
+                },
+                "safari_ios": "mirror",
+                "samsunginternet_android": "mirror",
+                "webview_android": "mirror",
+                "webview_ios": "mirror"
+              },
+              "status": {
+                "experimental": false,
+                "standard_track": true,
+                "deprecated": false
+              }
             }
           }
         }
@@ -2118,7 +2182,7 @@
         "options_parameter": {
           "__compat": {
             "description": "`options` parameter",
-            "spec_url": "https://dom.spec.whatwg.org/#dom-document-createelementns-namespace-qualifiedname-options-options",
+            "spec_url": "https://dom.spec.whatwg.org/#dictdef-elementcreationoptions",
             "tags": [
               "web-features:dom"
             ],
@@ -2138,7 +2202,7 @@
               "opera": "mirror",
               "opera_android": "mirror",
               "safari": {
-                "version_added": false
+                "version_added": "26"
               },
               "safari_ios": "mirror",
               "samsunginternet_android": "mirror",
@@ -2149,6 +2213,70 @@
               "experimental": false,
               "standard_track": true,
               "deprecated": false
+            }
+          },
+          "customElementRegistry_option": {
+            "__compat": {
+              "description": "`customElementRegistry` option",
+              "spec_url": "https://dom.spec.whatwg.org/#dictdef-elementcreationoptions",
+              "support": {
+                "chrome": {
+                  "version_added": "146"
+                },
+                "chrome_android": "mirror",
+                "edge": "mirror",
+                "firefox": {
+                  "version_added": false
+                },
+                "firefox_android": "mirror",
+                "oculus": "mirror",
+                "opera": "mirror",
+                "opera_android": "mirror",
+                "safari": {
+                  "version_added": "26"
+                },
+                "safari_ios": "mirror",
+                "samsunginternet_android": "mirror",
+                "webview_android": "mirror",
+                "webview_ios": "mirror"
+              },
+              "status": {
+                "experimental": false,
+                "standard_track": true,
+                "deprecated": false
+              }
+            }
+          },
+          "options_is_parameter": {
+            "__compat": {
+              "description": "`is` option",
+              "spec_url": "https://dom.spec.whatwg.org/#dictdef-elementcreationoptions",
+              "support": {
+                "chrome": {
+                  "version_added": "56"
+                },
+                "chrome_android": "mirror",
+                "edge": "mirror",
+                "firefox": {
+                  "version_added": false
+                },
+                "firefox_android": "mirror",
+                "oculus": "mirror",
+                "opera": "mirror",
+                "opera_android": "mirror",
+                "safari": {
+                  "version_added": false
+                },
+                "safari_ios": "mirror",
+                "samsunginternet_android": "mirror",
+                "webview_android": "mirror",
+                "webview_ios": "mirror"
+              },
+              "status": {
+                "experimental": false,
+                "standard_track": true,
+                "deprecated": false
+              }
             }
           }
         }

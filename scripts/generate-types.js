@@ -52,7 +52,7 @@ const compileTypesFromSchemas = async (sources, destination) => {
     destination instanceof URL ? destination : new URL(destination, root);
 
   await fs.writeFile(file, ts);
-  spawn('tsc', ['--skipLibCheck', fileURLToPath(file)], {
+  spawn('tsc', ['--skipLibCheck', '--ignoreConfig', fileURLToPath(file)], {
     cwd: fileURLToPath(root),
     stdio: 'inherit',
   });

@@ -6,7 +6,10 @@ import { styleText } from 'node:util';
 
 import stringify from '../lib/stringify-and-order-properties.js';
 
-import { newBrowserEntry, updateBrowserEntry } from './utils.js';
+import { getRSSItems, newBrowserEntry, updateBrowserEntry } from './utils.js';
+
+const USER_AGENT =
+  'MDN-Browser-Release-Update-Bot/1.0 (+https://developer.mozilla.org/)';
 
 /**
  * @typedef {object} Release
@@ -46,6 +49,140 @@ const extractReleaseData = (str) => {
     engineVersion: result[3].substring(2),
     releaseNote: '',
   };
+};
+
+/**
+ * Fetches the latest Safari Technology Preview blog post via the webkit.org RSS feed.
+ * @param {string} feedURL The RSS feed URL.
+ * @returns {Promise<{link: string, date: string}>} The URL and publication date of the latest post.
+ */
+const getLatestSTPBlogPost = async (feedURL) => {
+  const items = await getRSSItems(feedURL);
+  const latest = items[0];
+  const date = new Date(latest.pubDate).toISOString().substring(0, 10);
+  return { link: latest.link, date };
+};
+
+/**
+ * Fetches a Safari TP blog post and extracts the end commit hash from the WebKit compare URL.
+ * @param {string} url The blog post URL.
+ * @returns {Promise<string>} The end commit hash.
+ */
+const extractWebKitEndCommit = async (url) => {
+  const response = await fetch(url, { headers: { 'User-Agent': USER_AGENT } });
+  if (!response.ok) {
+    throw new Error(`Failed to fetch blog post: HTTP ${response.status}`);
+  }
+  const html = await response.text();
+  const match =
+    /https:\/\/github\.com\/WebKit\/WebKit\/compare\/[0-9a-f]+\.\.\.([0-9a-f]+)/.exec(
+      html,
+    );
+  if (!match) {
+    throw new Error(`WebKit commit range not found in blog post: ${url}`);
+  }
+  return match[1];
+};
+
+/**
+ * Fetches Configurations/Version.xcconfig for a given WebKit commit and returns the version string.
+ * @param {string} commit The WebKit commit hash.
+ * @returns {Promise<string>} The WebKit version (e.g., "620.1.15").
+ */
+const getWebKitVersionFromCommit = async (commit) => {
+  const url = `https://raw.githubusercontent.com/WebKit/WebKit/${commit}/Configurations/Version.xcconfig`;
+  const response = await fetch(url, { headers: { 'User-Agent': USER_AGENT } });
+  if (!response.ok) {
+    throw new Error(
+      `Failed to fetch Version.xcconfig: HTTP ${response.status}`,
+    );
+  }
+  const text = await response.text();
+  const major = /MAJOR_VERSION\s*=\s*(\d+)/.exec(text)?.[1];
+  const minor = /MINOR_VERSION\s*=\s*(\d+)/.exec(text)?.[1];
+  const tiny = /TINY_VERSION\s*=\s*(\d+)/.exec(text)?.[1];
+  if (!major || !minor || !tiny) {
+    throw new Error('Failed to parse WebKit version from Version.xcconfig');
+  }
+  return `${major}.${minor}.${tiny}`;
+};
+
+/**
+ * Applies the latest Safari Technology Preview data to an already-loaded BCD object.
+ * @param {*} safariBCD The in-memory BCD object to update.
+ * @param {*} options The options, must include bcdBrowserName and safariTPBlogFeedURL.
+ * @returns {Promise<string>} The log of what has been updated (empty if nothing or on error).
+ */
+const applyTPRelease = async (safariBCD, options) => {
+  //
+  // Get the latest Safari TP blog post via RSS
+  //
+  let blogPost;
+  try {
+    blogPost = await getLatestSTPBlogPost(options.safariTPBlogFeedURL);
+  } catch (e) {
+    console.error(
+      styleText('red', `\nFailed to fetch Safari TP blog feed: ${e}`),
+    );
+    return '';
+  }
+
+  //
+  // Extract the WebKit end commit from the blog post HTML
+  //
+  let commit;
+  try {
+    commit = await extractWebKitEndCommit(blogPost.link);
+  } catch (e) {
+    console.error(
+      styleText(
+        'red',
+        `\nFailed to extract WebKit commit from Safari TP blog post: ${e}`,
+      ),
+    );
+    return '';
+  }
+
+  //
+  // Determine the WebKit engine version from Version.xcconfig
+  //
+  let engineVersion;
+  try {
+    engineVersion = await getWebKitVersionFromCommit(commit);
+  } catch (e) {
+    console.error(
+      styleText(
+        'red',
+        `\nFailed to get WebKit version for commit ${commit}: ${e}`,
+      ),
+    );
+    return '';
+  }
+
+  //
+  // Create or update the "preview" entry
+  //
+  if (safariBCD.browsers[options.bcdBrowserName].releases['preview']) {
+    return updateBrowserEntry(
+      safariBCD,
+      options.bcdBrowserName,
+      'preview',
+      blogPost.date,
+      'nightly',
+      blogPost.link,
+      engineVersion,
+    );
+  }
+  return newBrowserEntry(
+    safariBCD,
+    options.bcdBrowserName,
+    'preview',
+    'nightly',
+    'WebKit',
+    blogPost.date,
+    blogPost.link,
+    engineVersion,
+  );
 };
 
 /**
@@ -170,6 +307,16 @@ export const updateSafariReleases = async (options) => {
       }
     }
   });
+
+  //
+  // Update the nightly "preview" entry from Safari Technology Preview (desktop only)
+  //
+  if (options.safariTPBlogFeedURL) {
+    const tpResult = await applyTPRelease(safariBCD, options);
+    if (tpResult) {
+      result += `\n#### Technology Preview\n${tpResult}`;
+    }
+  }
 
   //
   // Write the update browser's json to file

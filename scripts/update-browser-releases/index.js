@@ -212,6 +212,8 @@ const options = {
     releaseNoteJSON:
       'https://developer.apple.com/tutorials/data/documentation/safari-release-notes.json',
     releaseNoteURLBase: 'https://developer.apple.com',
+    safariTPBlogFeedURL:
+      'https://webkit.org/blog/category/safari-technology-preview/feed/',
   },
   safari_ios: {
     browserName: 'Safari for iOS',

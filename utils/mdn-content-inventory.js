@@ -29,7 +29,7 @@ const slugByPath = (() => {
 
     for (const path of paths) {
       const slugTail = slug.split('/').at(-1);
-      const pathTail = path.split('.').at(-1);
+      const pathTail = path.split('.').at(-1)?.replace(/^@@/g, '');
 
       if (!slugTail.includes(pathTail) && !pathTail?.includes(slugTail)) {
         // Ignore unrelated pages/features.

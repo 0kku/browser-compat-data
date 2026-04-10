@@ -1134,7 +1134,7 @@
               "edge": "mirror",
               "firefox": [
                 {
-                  "version_added": "preview"
+                  "version_added": "150"
                 },
                 {
                   "version_added": "131",
@@ -1807,6 +1807,38 @@
             "standard_track": true,
             "deprecated": false
           }
+        },
+        "html_name_validity": {
+          "__compat": {
+            "description": "Emoji and more Unicode in element and attribute names and namespace prefix (valid names match HTML parser)",
+            "spec_url": "https://dom.spec.whatwg.org/#namespaces",
+            "support": {
+              "chrome": {
+                "version_added": "143"
+              },
+              "chrome_android": "mirror",
+              "edge": "mirror",
+              "firefox": {
+                "version_added": "149"
+              },
+              "firefox_android": "mirror",
+              "oculus": "mirror",
+              "opera": "mirror",
+              "opera_android": "mirror",
+              "safari": {
+                "version_added": false
+              },
+              "safari_ios": "mirror",
+              "samsunginternet_android": "mirror",
+              "webview_android": "mirror",
+              "webview_ios": "mirror"
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
         }
       },
       "createAttributeNS": {
@@ -1850,6 +1882,38 @@
             "experimental": false,
             "standard_track": true,
             "deprecated": false
+          }
+        },
+        "html_name_validity": {
+          "__compat": {
+            "description": "Emoji and more Unicode in element and attribute names and namespace prefix (valid names match HTML parser)",
+            "spec_url": "https://dom.spec.whatwg.org/#namespaces",
+            "support": {
+              "chrome": {
+                "version_added": "143"
+              },
+              "chrome_android": "mirror",
+              "edge": "mirror",
+              "firefox": {
+                "version_added": "149"
+              },
+              "firefox_android": "mirror",
+              "oculus": "mirror",
+              "opera": "mirror",
+              "opera_android": "mirror",
+              "safari": {
+                "version_added": false
+              },
+              "safari_ios": "mirror",
+              "samsunginternet_android": "mirror",
+              "webview_android": "mirror",
+              "webview_ios": "mirror"
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
           }
         }
       },
@@ -2031,6 +2095,38 @@
             "deprecated": false
           }
         },
+        "html_name_validity": {
+          "__compat": {
+            "description": "Emoji and more Unicode in element and attribute names and namespace prefix (valid names match HTML parser)",
+            "spec_url": "https://dom.spec.whatwg.org/#namespaces",
+            "support": {
+              "chrome": {
+                "version_added": "143"
+              },
+              "chrome_android": "mirror",
+              "edge": "mirror",
+              "firefox": {
+                "version_added": "149"
+              },
+              "firefox_android": "mirror",
+              "oculus": "mirror",
+              "opera": "mirror",
+              "opera_android": "mirror",
+              "safari": {
+                "version_added": false
+              },
+              "safari_ios": "mirror",
+              "samsunginternet_android": "mirror",
+              "webview_android": "mirror",
+              "webview_ios": "mirror"
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
+        },
         "options_parameter": {
           "__compat": {
             "description": "`options` parameter",
@@ -2177,6 +2273,38 @@
             "experimental": false,
             "standard_track": true,
             "deprecated": false
+          }
+        },
+        "html_name_validity": {
+          "__compat": {
+            "description": "Emoji and more Unicode in element and attribute names and namespace prefix (valid names match HTML parser)",
+            "spec_url": "https://dom.spec.whatwg.org/#namespaces",
+            "support": {
+              "chrome": {
+                "version_added": "143"
+              },
+              "chrome_android": "mirror",
+              "edge": "mirror",
+              "firefox": {
+                "version_added": "149"
+              },
+              "firefox_android": "mirror",
+              "oculus": "mirror",
+              "opera": "mirror",
+              "opera_android": "mirror",
+              "safari": {
+                "version_added": false
+              },
+              "safari_ios": "mirror",
+              "samsunginternet_android": "mirror",
+              "webview_android": "mirror",
+              "webview_ios": "mirror"
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
           }
         },
         "options_parameter": {
@@ -2811,7 +2939,15 @@
             "chrome_android": "mirror",
             "edge": "mirror",
             "firefox": {
-              "version_added": false
+              "version_added": "150",
+              "flags": [
+                {
+                  "type": "preference",
+                  "name": "dom.scoped-custom-element-registries.enabled",
+                  "value_to_set": "true"
+                }
+              ],
+              "impl_url": "https://bugzil.la/2018900"
             },
             "firefox_android": "mirror",
             "oculus": "mirror",

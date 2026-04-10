@@ -398,7 +398,7 @@
             "description": "`options.iterationComposite` parameter",
             "spec_url": "https://drafts.csswg.org/web-animations-2/#dom-keyframeeffectoptions-iterationcomposite",
             "tags": [
-              "web-features:web-animations"
+              "web-features:web-animations-iterationcomposite"
             ],
             "support": {
               "chrome": {
@@ -414,7 +414,7 @@
               "opera": "mirror",
               "opera_android": "mirror",
               "safari": {
-                "version_added": false
+                "version_added": "16.4"
               },
               "safari_ios": "mirror",
               "samsunginternet_android": "mirror",
@@ -422,7 +422,7 @@
               "webview_ios": "mirror"
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -4458,7 +4458,15 @@
             "chrome_android": "mirror",
             "edge": "mirror",
             "firefox": {
-              "version_added": false
+              "version_added": "150",
+              "flags": [
+                {
+                  "type": "preference",
+                  "name": "dom.scoped-custom-element-registries.enabled",
+                  "value_to_set": "true"
+                }
+              ],
+              "impl_url": "https://bugzil.la/2018900"
             },
             "firefox_android": "mirror",
             "oculus": "mirror",
@@ -8020,10 +8028,7 @@
             ],
             "firefox_android": "mirror",
             "oculus": "mirror",
-            "opera": {
-              "version_added": "64",
-              "notes": "Before version 126, `pointerrawupdate` events were exposed to non-secure contexts."
-            },
+            "opera": "mirror",
             "opera_android": "mirror",
             "safari": {
               "version_added": false
@@ -10237,6 +10242,38 @@
               "deprecated": false
             }
           }
+        },
+        "html_name_validity": {
+          "__compat": {
+            "description": "Emoji and more Unicode in element and attribute names and namespace prefix (valid names match HTML parser)",
+            "spec_url": "https://dom.spec.whatwg.org/#namespaces",
+            "support": {
+              "chrome": {
+                "version_added": "143"
+              },
+              "chrome_android": "mirror",
+              "edge": "mirror",
+              "firefox": {
+                "version_added": "149"
+              },
+              "firefox_android": "mirror",
+              "oculus": "mirror",
+              "opera": "mirror",
+              "opera_android": "mirror",
+              "safari": {
+                "version_added": false
+              },
+              "safari_ios": "mirror",
+              "samsunginternet_android": "mirror",
+              "webview_android": "mirror",
+              "webview_ios": "mirror"
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
         }
       },
       "setAttributeNode": {
@@ -10326,6 +10363,38 @@
             "experimental": false,
             "standard_track": true,
             "deprecated": false
+          }
+        },
+        "html_name_validity": {
+          "__compat": {
+            "description": "Emoji and more Unicode in element and attribute names and namespace prefix (valid names match HTML parser)",
+            "spec_url": "https://dom.spec.whatwg.org/#namespaces",
+            "support": {
+              "chrome": {
+                "version_added": "143"
+              },
+              "chrome_android": "mirror",
+              "edge": "mirror",
+              "firefox": {
+                "version_added": "149"
+              },
+              "firefox_android": "mirror",
+              "oculus": "mirror",
+              "opera": "mirror",
+              "opera_android": "mirror",
+              "safari": {
+                "version_added": false
+              },
+              "safari_ios": "mirror",
+              "samsunginternet_android": "mirror",
+              "webview_android": "mirror",
+              "webview_ios": "mirror"
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
           }
         }
       },
@@ -10818,6 +10887,38 @@
             "experimental": false,
             "standard_track": true,
             "deprecated": false
+          }
+        },
+        "html_name_validity": {
+          "__compat": {
+            "description": "Emoji and more Unicode in element and attribute names and namespace prefix (valid names match HTML parser)",
+            "spec_url": "https://dom.spec.whatwg.org/#namespaces",
+            "support": {
+              "chrome": {
+                "version_added": "143"
+              },
+              "chrome_android": "mirror",
+              "edge": "mirror",
+              "firefox": {
+                "version_added": "149"
+              },
+              "firefox_android": "mirror",
+              "oculus": "mirror",
+              "opera": "mirror",
+              "opera_android": "mirror",
+              "safari": {
+                "version_added": false
+              },
+              "safari_ios": "mirror",
+              "samsunginternet_android": "mirror",
+              "webview_android": "mirror",
+              "webview_ios": "mirror"
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
           }
         }
       },

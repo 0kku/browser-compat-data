@@ -1209,6 +1209,9 @@
           "__compat": {
             "description": "`type` parameter supports `\"image/jpeg\"`",
             "spec_url": "https://html.spec.whatwg.org/multipage/canvas.html#dom-canvas-toblob-dev",
+            "tags": [
+              "web-features:canvas"
+            ],
             "support": {
               "chrome": {
                 "version_added": "50"
@@ -1351,6 +1354,9 @@
           "__compat": {
             "description": "`type` parameter supports `\"image/jpeg\"`",
             "spec_url": "https://html.spec.whatwg.org/multipage/canvas.html#dom-canvas-todataurl-dev",
+            "tags": [
+              "web-features:canvas"
+            ],
             "support": {
               "chrome": {
                 "version_added": "50"

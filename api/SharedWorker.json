@@ -12,8 +12,7 @@
             "version_added": "5"
           },
           "chrome_android": {
-            "version_added": false,
-            "impl_url": "https://crbug.com/40290702"
+            "version_added": "148"
           },
           "edge": "mirror",
           "firefox": {
@@ -74,7 +73,7 @@
               "version_added": "5"
             },
             "chrome_android": {
-              "version_added": false
+              "version_added": "148"
             },
             "edge": "mirror",
             "firefox": {
@@ -134,7 +133,7 @@
                 "version_added": "80"
               },
               "chrome_android": {
-                "version_added": false
+                "version_added": "148"
               },
               "edge": "mirror",
               "firefox": {
@@ -249,7 +248,7 @@
                 "version_added": "70"
               },
               "chrome_android": {
-                "version_added": false
+                "version_added": "148"
               },
               "edge": "mirror",
               "firefox": {
@@ -286,7 +285,7 @@
                 "version_added": "125"
               },
               "chrome_android": {
-                "version_added": false
+                "version_added": "148"
               },
               "edge": {
                 "version_added": false
@@ -325,7 +324,7 @@
                 "version_added": "80"
               },
               "chrome_android": {
-                "version_added": false
+                "version_added": "148"
               },
               "edge": "mirror",
               "firefox": {
@@ -367,7 +366,7 @@
               "version_added": "5"
             },
             "chrome_android": {
-              "version_added": false
+              "version_added": "148"
             },
             "edge": "mirror",
             "firefox": {
@@ -428,7 +427,7 @@
               "version_added": "5"
             },
             "chrome_android": {
-              "version_added": false
+              "version_added": "148"
             },
             "edge": "mirror",
             "firefox": {

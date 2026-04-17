@@ -1,5 +1,29 @@
 # @mdn/browser-compat-data release notes
 
+## [v7.3.12](https://github.com/mdn/browser-compat-data/releases/tag/v7.3.12)
+
+April 17, 2026
+
+### Additions
+
+- `api.HTMLTemplateElement.shadowRootSlotAssignment` ([#29457](https://github.com/mdn/browser-compat-data/pull/29457))
+- `browsers.bun.releases.1.3.12` ([#29463](https://github.com/mdn/browser-compat-data/pull/29463))
+- `browsers.edge.releases.150` ([#29463](https://github.com/mdn/browser-compat-data/pull/29463))
+- `browsers.opera_android.releases.97` ([#29490](https://github.com/mdn/browser-compat-data/pull/29490))
+- `css.properties.hanging-punctuation.force-end` ([#29497](https://github.com/mdn/browser-compat-data/pull/29497))
+- `css.types.color.light-dark.image_value` ([#29429](https://github.com/mdn/browser-compat-data/pull/29429))
+- `css.types.env.preferred-text-scale` ([#29453](https://github.com/mdn/browser-compat-data/pull/29453))
+- `html.elements.meta.name.text-scale` ([#29453](https://github.com/mdn/browser-compat-data/pull/29453))
+- `html.elements.template.shadowrootslotassignment` ([#29457](https://github.com/mdn/browser-compat-data/pull/29457))
+- `webdriver.bidi.script.getRealms.type_parameter.worker` ([#29499](https://github.com/mdn/browser-compat-data/pull/29499))
+
+### Statistics
+
+- 12 contributors have changed 187 files with 1,246 additions and 826 deletions in 33 commits ([`v7.3.11...v7.3.12`](https://github.com/mdn/browser-compat-data/compare/v7.3.11...v7.3.12))
+- 19,568 total features
+- 1,241 total contributors
+- 5,639 total stargazers
+
 ## [v7.3.11](https://github.com/mdn/browser-compat-data/releases/tag/v7.3.11)
 
 April 10, 2026
